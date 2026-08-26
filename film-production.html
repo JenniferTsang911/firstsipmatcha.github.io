@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film & Production Catering - First Sip Matcha</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Flatpickr Date Picker CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <style>
+    :root {
+      --dark-navy: #192a3e;
+      --light-bg: #edf2f7;
+      --text-dark: #192a3e;
+      --text-muted: #4a5568;
+      --white: #ffffff;
+      --input-bg: #eef2f6;
+      --input-border: #cbd5e1;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Header */
+    header {
+      background-color: var(--dark-navy);
+      padding: 30px 55px;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-logo img {
+      height: 70px;
+      display: block;
+    }
+
+    /* Layout Wrappers */
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24 20px;
+    }
+
+    h2.section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    /* Photo Grids / Carousels */
+    .photo-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .photo-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    .photo-card {
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Custom Bullet Lists */
+    ul.bullet-list {
+      list-style: none;
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Modern Pricing Cards Grid */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Featured / Most Popular Highlight */
+    .pricing-card.popular {
+      border: 2px solid var(--dark-navy);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background-color: var(--dark-navy);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-plan-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .card-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .card-price-wrap .price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -1px;
+    }
+
+    .card-price-wrap .sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      min-height: 50px; /* Aligns content across cards */
+    }
+
+    /* Card Button */
+    .btn-card-select {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: all 0.2s;
+    }
+
+    .btn-card-select.outline {
+      background-color: #f1f5f9;
+      color: var(--text-dark);
+    }
+
+    .btn-card-select.outline:hover {
+      background-color: #e2e8f0;
+    }
+
+    .btn-card-select.solid {
+      background-color: var(--dark-navy);
+      color: var(--white);
+    }
+
+    .btn-card-select.solid:hover {
+      opacity: 0.9;
+    }
+
+    /* Features List with Checkmarks */
+    .card-divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .features-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    ul.check-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.check-list li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    /* Checkmark Icon */
+    ul.check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--dark-navy);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive adjustment */
+    @media (max-width: 900px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Add-ons & Menu Lists */
+    .details-block {
+      font-size: 0.95rem;
+      margin-bottom: 35px;
+    }
+
+    .details-block p {
+      margin-bottom: 6px;
+    }
+
+    /* Quote Request Form Layout */
+    .quote-section {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+      padding-top: 60px;
+      padding-bottom: 80px;
+    }
+
+    .quote-form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--dark-navy);
+      background-color: var(--white);
+    }
+
+    textarea.form-control {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .form-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .form-disclaimer a {
+      color: var(--text-muted);
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      background-color: #6c7a89;
+      color: var(--white);
+      padding: 12px 32px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--dark-navy);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .packages-grid, .photo-grid-5, .photo-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .quote-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Ensure the list item anchors the absolute dropdown menu */
+    .nav-links li.dropdown {
+      position: relative;
+      padding-bottom: 10px; /* Bridge hover gap to the menu */
+      margin-bottom: -10px;
+    }
+
+    /* Dropdown Container */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-navy);
+      min-width: 220px;
+      list-style: none;
+      padding: 12px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+    }
+
+    /* Dropdown Links */
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    /* Link Hover Effect */
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show Dropdown on Hover */
+    .nav-links li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <!-- Dropdown Parent Item -->
+        <li class="dropdown">
+          <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
+          <!-- Submenu -->
+          <ul class="dropdown-menu">
+            <li><a href="film-production.html">Film & Production</a></li>
+            <li><a href="private-event.html">Private Events</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      
+      <div class="nav-logo">
+        <a href="home.html">
+          <img src="FirstSip_Bowl.png" alt="First Sip Matcha Logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Photo Gallery Strip Top -->
+  <div class="section-container" style="padding-bottom: 0;">
+    <div class="photo-grid-5">
+      <div class="photo-card"><img src="Gallery Images\20260711_100650.jpg" alt="Production Matcha Drink"></div>
+      <div class="photo-card"><img src="Gallery Images\20260314_104449_exported_63574.jpg" alt="Preparing Drinks"></div>
+      <div class="photo-card"><img src="Gallery Images\20260530_081037.jpg" alt="Matcha Bar Setup"></div>
+      <div class="photo-card"><img src="Gallery Images/20260605_183055.jpg" alt="On Set Team"></div>
+      <div class="photo-card"><img src="Gallery Images/20250927_091757.jpg" alt="Whisking Matcha"></div>
+    </div>
+  </div>
+
+  <!-- Built For Production Intro -->
+  <section class="section-container">
+    <h2 class="section-heading">We are built for production</h2>
+    <ul class="bullet-list">
+      <li>Efficient beverage service <strong>designed around crew breaks and production schedules.</strong></li>
+      <li>From smaller commercial shoots to <strong>high-volume</strong> productions, we handle load-in, setup, service, and teardown.</li>
+      <li>Serving productions throughout <strong>Toronto and the GTA.</strong></li>
+      <li><strong>Dairy + oat milk</strong>, both available as standard options.</li>
+      <li>Our service is designed to be <strong>efficient, flexible, and easy to coordinate with your production team.</strong></li>
+    </ul>
+  </section>
+
+  <!-- Production Packages Section -->
+  <section class="section-container">
+  <h2 class="section-heading">Production Packages</h2>
+  
+  <div class="packages-grid">
+    
+    <!-- Package 1 -->
+    <div class="pricing-card">
+      <h3 class="card-plan-title">On-Set Matcha Bar</h3>
+      <div class="card-price-wrap">
+        <span class="price">$650</span>
+      </div>
+      <p class="card-subtitle"><i>Ideal for smaller crews, commercial shoots, photo productions, and short production days.</i></p>
+      
+      <a href="#quote-form" class="btn-card-select outline">Select package</a>
+      
+      <hr class="card-divider">
+      <div class="features-label">Includes</div>
+      
+      <ul class="check-list">
+        <li>Up to <strong>50</strong> drinks</li>
+        <li><strong>1.5</strong> hours of service</li>
+        <li>1 service staff</li>
+        <li>Choice of 2 signature flavours</li>
+      </ul>
+    </div>
+
+    <!-- Package 2 (Most Popular Highlighted) -->
+    <div class="pricing-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <h3 class="card-plan-title">Production Matcha Bar</h3>
+      <div class="card-price-wrap">
+        <span class="price">$1,250</span>
+      </div>
+      <p class="card-subtitle"><i>Our most popular format for mid-sized productions and longer service windows.</i></p>
+      
+      <a href="#quote-form" class="btn-card-select solid">Select package</a>
+      
+      <hr class="card-divider">
+      <div class="features-label">Includes</div>
+      
+      <ul class="check-list">
+        <li>Up to <strong>100</strong> drinks</li>
+        <li><strong>2</strong> hours of service</li>
+        <li>2 service staff</li>
+        <li>Choice of 3 signature flavours</li>
+      </ul>
+    </div>
+
+    <!-- Package 3 -->
+    <div class="pricing-card">
+      <h3 class="card-plan-title">High-Volume Production</h3>
+      <div class="card-price-wrap">
+        <span class="price">$2,350</span>
+      </div>
+      <p class="card-subtitle"><i>Designed for large crews, full-day productions, commercial sets, and high-volume service.</i></p>
+      
+      <a href="#quote-form" class="btn-card-select outline">Select package</a>
+      
+      <hr class="card-divider">
+      <div class="features-label">Includes</div>
+      
+      <ul class="check-list">
+        <li>Up to <strong>200</strong> drinks</li>
+        <li><strong>3</strong> hours of service</li>
+        <li><strong>2-3</strong> service staff</li>
+        <li>Choice of 4 signature flavours</li>
+      </ul>
+    </div>
+
+    </div> <!-- Closes .packages-grid -->
+
+    <!-- Placed below the grid so it spans full width -->
+    <div class="details-block">
+      <p><strong>Every First Sip Includes:</strong></p>
+      <ul class="bullet-list">
+        <li><strong>12 oz</strong> serving sizes</li>
+        <li><strong>Milk options:</strong> Dairy and Oat Milk included.</li>
+        <li><strong>Full Service:</strong> Complete setup and teardown for your event.</li>
+        <li><strong>Professional service staff:</strong> Staffing is scaled according to production size and service requirements.</li>
+        <li><strong>Complete beverage preparation:</strong> We bring the ingredients and equipment required for service.</li>
+      </ul>
+    </div>
+
+  <!-- Menu Section -->
+  <section class="section-container">
+    <h2 class="section-heading">Menu</h2>
+    
+    <div class="details-block">
+      <p><em>Choose flavours from our classic menu</em></p>
+      <ul class="bullet-list">
+        <li>Classic Matcha Latte</li>
+        <li>Strawberry Matcha Latte (Available as cold foam)</li>
+        <li>Mango Matcha Latte</li>
+      </ul>
+    </div>
+
+    <div class="details-block">
+      <p><em>Choose flavours from our seasonal menu</em></p>
+      <ul class="bullet-list">
+        <li>Banana Bread Matcha Latte</li>
+        <li>Lavender Matcha Latte</li>
+        <li>White Mocha Matcha Latte</li>
+        <li>Pumpkin-spiced Matcha Latte (Available as cold foam)</li>
+        <li>Cookie butter Matcha Latte (Available as cold foam)</li>
+        <li>Pandan Matcha Latte</li>
+        <li>Ube Matcha Latte</li>
+        <li>Black Sesame Matcha Latte (Available as cold foam)</li>
+        <li>Double Matcha Matcha Latte</li>
+      </ul>
+    </div>
+
+    <div class="details-block">
+      <p><strong>The "Custom Sip" - $150 per flavour</strong></p>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Have a drink in mind that's not listed? We offer custom drink development, including R&D, recipe testing, and ingredient sourcing, to create a signature drink exclusive to your event.
+      </p>
+    </div>
+  </section>
+
+  <!-- Secondary Photo Strip -->
+  <div class="section-container" style="padding-top: 0; padding-bottom: 0;">
+    <div class="photo-grid-4">
+      <div class="photo-card"><img src="Gallery Images/20260808_083750.jpg" alt="Specialty Latte"></div>
+      <div class="photo-card"><img src="Gallery Images/20260607_110757.jpg" alt="Iced Matcha"></div>
+      <div class="photo-card"><img src="Gallery Images/20260531_091415.jpg" alt="Two Matcha Lattes"></div>
+      <div class="photo-card"><img src="Gallery Images/20260705_092430.jpg" alt="Cheers Matcha Drinks"></div>
+    </div>
+  </div>
+
+  <!-- Venue / Production Requirements -->
+  <section class="section-container">
+    <h2 class="section-heading">Venue/ Production Requirements</h2>
+    <p style="margin-bottom: 12px; font-style: italic; color: var(--text-muted);">
+      To ensure the best experience for your production, we require the following from the venue:
+    </p>
+    <ul class="bullet-list">
+      <li><strong>Power Access:</strong> Access to a dedicated standard power outlet within 10 feet of the setup area.</li>
+      <li><strong>Space:</strong> A minimum 6ft x 4ft flat surface for our bar setup.</li>
+      <li><strong>Access:</strong> Load-in access 60 minutes before the service start time.</li>
+    </ul>
+  </section>
+
+  <!-- Request a Quote Section with Form -->
+  <section class="section-container", id="quote-form">
+    <div class="quote-section">
+      
+      <div>
+        <h2 class="section-heading">Request a Quote Today!</h2>
+      </div>
+
+      <form class="quote-form-container" action="https://api.web3forms.com/submit" method="POST">
+  
+        <!-- 1. YOUR WEB3FORMS ACCESS KEY (REPLACE WITH YOUR ACTUAL KEY) -->
+        <input type="hidden" name="access_key" value="d7b7741e-f0a0-4061-9b95-5ab1167838ed">
+
+        <!-- Optional: Customize Email Subject Line -->
+        <input type="hidden" name="subject" value="New Film & Production Quote Request">
+
+        <!-- Optional: Prevent Spam with a Hidden Honeypot Field -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- Form Fields (Make sure each field has a unique 'name' attribute) -->
+        <div class="form-group">
+          <input type="text" name="Full Name" class="form-control" placeholder="Full name *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" name="Company" class="form-control" placeholder="Company *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" name="Email" class="form-control" placeholder="Email *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="tel" name="Phone Number" class="form-control" placeholder="Phone number">
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="production-dates" name="Production Dates" class="form-control" placeholder="Select production date(s) *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="desired-start-time" name="Desired Start Time" class="form-control" placeholder="Desired start time *" required>
+        </div>
+                
+        <div class="form-group">
+          <input type="text" name="Service Duration" class="form-control" placeholder="Desired service duration *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" name="Production Location" class="form-control" placeholder="Production location *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="number" name="Estimated Crew Size" class="form-control" placeholder="Estimated crew size *" required>
+        </div>
+        
+        <div class="form-group">
+          <textarea name="Comments / Special Requests" class="form-control" placeholder="Comments. Please leave any questions or special requests for your production."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+
+    </div>
+  </section>
+
+  <script>
+    flatpickr("#production-dates", {
+      mode: "range",            /* Allows selecting single dates or ranges */
+      dateFormat: "Y-m-d",      /* Formats as 2026-08-26 */
+      minDate: "today",         /* Prevents picking past dates */
+      showMonths: 1,
+      locale: {
+        rangeSeparator: " to "  /* Shows "2026-09-01 to 2026-09-03" when a range is picked */
+      }    });
+    flatpickr("#desired-start-time", {
+      enableTime: true,        /* Enables time selection */
+      noCalendar: true,        /* Hides the calendar view */
+      dateFormat: "h:i K",     /* Displays as "9:00 AM" or "2:30 PM" */
+      minuteIncrement: 15,     /* Locks choices to 15-minute intervals */
+      defaultHour: 9           /* Opens defaulting to 9:00 AM */
+    });
+
+  </script>
+
+</body>
+</html>

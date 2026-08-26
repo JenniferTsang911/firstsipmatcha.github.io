@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Events Catering - First Sip Matcha</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Flatpickr Date Picker CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <style>
+    :root {
+      --dark-navy: #192a3e;
+      --light-bg: #edf2f7;
+      --text-dark: #192a3e;
+      --text-muted: #4a5568;
+      --white: #ffffff;
+      --input-bg: #eef2f6;
+      --input-border: #cbd5e1;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Header */
+    header {
+      background-color: var(--dark-navy);
+      padding: 30px 55px;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-logo img {
+      height: 70px;
+      display: block;
+    }
+
+    /* Layout Wrappers */
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24 20px;
+    }
+
+    h2.section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    /* Hero Section: Built for your event */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 380px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Custom Bullet Lists */
+    ul.bullet-list {
+      list-style: none;
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Modern Pricing Cards Grid */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid var(--dark-navy);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background-color: var(--dark-navy);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-plan-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .card-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .card-price-wrap .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -1px;
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      min-height: 45px;
+    }
+
+    .btn-card-select {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: all 0.2s;
+    }
+
+    .btn-card-select.outline {
+      background-color: #f1f5f9;
+      color: var(--text-dark);
+    }
+
+    .btn-card-select.outline:hover {
+      background-color: #e2e8f0;
+    }
+
+    .btn-card-select.solid {
+      background-color: var(--dark-navy);
+      color: var(--white);
+    }
+
+    .btn-card-select.solid:hover {
+      opacity: 0.9;
+    }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .features-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    ul.check-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.check-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    ul.check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--dark-navy);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* Photo Grid (Secondary gallery) */
+    .photo-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .photo-card {
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Details Blocks */
+    .details-block {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .details-block p {
+      margin-bottom: 1px;
+    }
+
+    /* Form Layout & Inputs */
+    .quote-section {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+
+    .quote-form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--dark-navy);
+      background-color: var(--white);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%4a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+    }
+
+    textarea.form-control {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      background-color: #6c7a89;
+      color: var(--white);
+      padding: 12px 32px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--dark-navy);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .hero-split, .packages-grid, .photo-grid-4, .quote-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Ensure the list item anchors the absolute dropdown menu */
+    .nav-links li.dropdown {
+      position: relative;
+      padding-bottom: 10px; /* Bridge hover gap to the menu */
+      margin-bottom: -10px;
+    }
+
+    /* Dropdown Container */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-navy);
+      min-width: 220px;
+      list-style: none;
+      padding: 12px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+    }
+
+    /* Dropdown Links */
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    /* Link Hover Effect */
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show Dropdown on Hover */
+    .nav-links li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <!-- Dropdown Parent Item -->
+        <li class="dropdown">
+          <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
+          <!-- Submenu -->
+          <ul class="dropdown-menu">
+            <li><a href="film-production.html">Film & Production</a></li>
+            <li><a href="private-event.html">Private Events</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      
+      <div class="nav-logo">
+        <a href="home.html">
+          <img src="FirstSip_Bowl.png" alt="First Sip Matcha Logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section-container">
+    <div class="hero-split">
+      <div>
+        <h2 class="section-heading">Built for your event</h2>
+        <ul class="bullet-list">
+          <li>Beautiful beverage service designed to fit into your event.</li>
+          <li>From <strong>intimate gatherings to large-scale</strong> celebrations.</li>
+          <li>We handle setup, preparation, service, and teardown from start to finish.</li>
+          <li>Serving private events throughout <strong>Toronto and the GTA.</strong></li>
+          <li><strong>Dairy + oat milk</strong>, both available as standard options.</li>
+          <li>Our service is designed to be seamless, memorable, and easy to coordinate with your event team.</li>
+        </ul>
+      </div>
+      <div class="hero-image">
+        <img src="Gallery Images/20260712_091840.jpg" alt="Matcha Drink Handheld">
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Packages Section -->
+  <section class="section-container">
+    <h2 class="section-heading">Live Matcha Bar Packages</h2>
+    
+    <div class="packages-grid">
+      
+      <!-- Package 1 -->
+      <div class="pricing-card">
+        <h3 class="card-plan-title">The First Impression</h3>
+        <div class="card-price-wrap">
+          <span class="price">$550</span>
+        </div>
+        <p class="card-subtitle">Ideal for intimate gatherings and office socials</p>
+        
+        <a href="#quote-form" class="btn-card-select outline">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>50 Drinks</strong></li>
+          <li><strong>1.5 Hours</strong> of Service</li>
+          <li>1 Matcharista</li>
+          <li>Choice of 2 Signature Flavours</li>
+        </ul>
+      </div>
+
+      <!-- Package 2 (Most Popular) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3 class="card-plan-title">The Signature Sip</h3>
+        <div class="card-price-wrap">
+          <span class="price">$1,050</span>
+        </div>
+        <p class="card-subtitle">Our most popular choice for weddings and mid-sized events</p>
+        
+        <a href="#quote-form" class="btn-card-select solid">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>100 Drinks</strong></li>
+          <li><strong>2 Hours</strong> of Service</li>
+          <li>2 Matcharistas</li>
+          <li>Choice of 3 Signature Flavours</li>
+        </ul>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="pricing-card">
+        <h3 class="card-plan-title">The Sip Society</h3>
+        <div class="card-price-wrap">
+          <span class="price">$1,950</span>
+        </div>
+        <p class="card-subtitle">High-volume service for large-scale celebrations and activities.</p>
+        
+        <a href="#quote-form" class="btn-card-select outline">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>200 Drinks</strong></li>
+          <li><strong>3 Hours</strong> of Service</li>
+          <li><strong>Full Matcharistas Team</strong> (2-3 Staff)</li>
+          <li>Choice of 4 Signature Flavours</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Travel & Logistics -->
+    <div class="details-block">
+      <p style="font-size: 1.05rem; margin-bottom: 10px;"><strong>Travel & Logistics</strong></p>
+      <ul class="bullet-list">
+        <li><strong>Toronto & GTA:</strong> Travel and setup are included.</li>
+        <li><strong>Outside GTA:</strong> A 10% travel fee applies to the final total.</li>
+        <li><strong>Additional Time:</strong> $100 per hour.</li>
+        <li><strong>Extra Drinks:</strong> $8.50 per drink (Sold in blocks of 25).</li>
+        <li><strong>Hot matcha option:</strong> +$100</li>
+      </ul>
+    </div>
+
+    <!-- Inclusions -->
+    <div class="details-block">
+      <p style="font-size: 1.05rem; margin-bottom: 10px;"><strong>Every First Sip Includes:</strong></p>
+      <ul class="bullet-list">
+        <li><strong>10 oz</strong> serving sizes</li>
+        <li><strong>Custom Branding:</strong> Your logo or event monogram stickered on every cup.</li>
+        <li><strong>Milk options:</strong> Dairy and Oat Milk included.</li>
+        <li><strong>Full Service:</strong> Complete setup and tear down for your event.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="section-container">
+    <h2 class="section-heading">Menu</h2>
+    
+    <div class="details-block">
+      <p><em>Choose flavours from our classic menu</em></p>
+      <ul class="bullet-list">
+        <li>Classic Matcha Latte</li>
+        <li>Strawberry Matcha Latte (Available as cold foam)</li>
+        <li>Mango Matcha Latte</li>
+      </ul>
+    </div>
+
+    <div class="details-block">
+      <p><em>Choose flavours from our seasonal menu</em></p>
+      <ul class="bullet-list">
+        <li>Banana Bread Matcha Latte</li>
+        <li>Lavender Matcha Latte</li>
+        <li>White Mocha Matcha Latte</li>
+        <li>Pumpkin-spiced Matcha Latte (Available as cold foam)</li>
+        <li>Cookie butter Matcha Latte (Available as cold foam)</li>
+        <li>Pandan Matcha Latte</li>
+        <li>Ube Matcha Latte</li>
+        <li>Black Sesame Matcha Latte (Available as cold foam)</li>
+        <li>Double Matcha Matcha Latte</li>
+      </ul>
+    </div>
+
+    <div class="details-block">
+      <p><strong>The "Custom Sip" - $150 per flavour</strong></p>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Have a drink in mind that's not listed? We offer custom drink development, including R&D, recipe testing, and ingredient sourcing, to create a signature drink exclusive to your event.
+      </p>
+    </div>
+  </section>
+
+  <!-- Venue Requirements -->
+  <section class="section-container">
+    <h2 class="section-heading">Venue Requirements</h2>
+    <p style="margin-bottom: 12px; font-style: italic; color: var(--text-muted);">
+      To ensure the best experience for your guests, we require the following from the venue:
+    </p>
+    <ul class="bullet-list">
+      <li><strong>Power Access:</strong> Access to a dedicated standard power outlet within 10 feet of the setup area.</li>
+      <li><strong>Space:</strong> A minimum 6ft x 4ft flat surface for our bar setup.</li>
+      <li><strong>Access:</strong> Load-in access 60 minutes before service start time.</li>
+    </ul>
+  </section>
+
+  <!-- Form Section -->
+  <section class="section-container" id="quote-form">
+    <div class="quote-section">
+      
+      <div>
+        <h2 class="section-heading">Request a Quote Today!</h2>
+      </div>
+
+      <form class="quote-form-container" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Key -->
+        <input type="hidden" name="access_key" value="d7b7741e-f0a0-4061-9b95-5ab1167838ed">
+        <input type="hidden" name="subject" value="New Private Event Quote Request">
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <div class="form-group">
+          <input type="text" name="Full Name" class="form-control" placeholder="Full name *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" name="Email" class="form-control" placeholder="Email *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="tel" name="Phone Number" class="form-control" placeholder="Phone number">
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="event-dates" name="Event Date(s)" class="form-control" placeholder="Event date *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="event-start-time" name="Event Start Time" class="form-control" placeholder="Event time *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" name="Event Location" class="form-control" placeholder="Event location *" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="number" name="Number of Guests" class="form-control" placeholder="Number of guests">
+        </div>
+
+        <div class="form-group">
+          <select name="Package Option" class="form-control" required>
+            <option value="" disabled selected>Package Option *</option>
+            <option value="The First Impression (50 drinks)">The First Impression (Up to 50 drinks)</option>
+            <option value="The Signature Sip (100 drinks)">The Signature Sip (Up to 100 drinks)</option>
+            <option value="The Sip Society (200 drinks)">The Sip Society (Up to 200 drinks)</option>
+            <option value="Custom / Unsure">Custom Package / Unsure</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <textarea name="Comments / Special Requests" class="form-control" placeholder="Comments. Please leave any questions and drink options you would like at your event."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Interactive Date & Time Setup -->
+  <script>
+    flatpickr("#event-dates", {
+      mode: "range",
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      showMonths: 1,
+      locale: {
+        rangeSeparator: " to "
+      }
+    });
+
+    flatpickr("#event-start-time", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "h:i K",
+      minuteIncrement: 15,
+      defaultHour: 10
+    });
+  </script>
+
+</body>
+</html>

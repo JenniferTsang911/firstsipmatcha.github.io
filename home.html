@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Sip Matcha</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Variables matching the screenshot palette */
+    :root {
+      --dark-navy: #192a3e;
+      --light-bg: #edf2f7;
+      --text-dark: #192a3e;
+      --text-muted: #5a6b7c;
+      --white: #ffffff;
+      
+      /* Update this line: */
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--dark-navy);
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* Top Navigation */
+    header {
+      background-color: var(--dark-navy);
+      padding: 30px 55px;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-logo img {
+      height: 70px;
+      display: block;
+    }
+
+    /* Hero Section (Split 50/50 Layout) */
+    .hero-split {
+      display: flex;
+      background-color: var(--light-bg);
+      min-height: 520px;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding: 60px 50px 60px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-subhead {
+      color: var(--text-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero-subhead i {
+      font-style: italic;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 35px;
+    }
+
+    .hero-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-solid {
+      background-color: var(--dark-navy);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--dark-navy);
+      transition: opacity 0.2s;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--dark-navy);
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--dark-navy);
+      transition: background-color 0.2s;
+    }
+
+    .btn-solid:hover, .btn-outline:hover {
+      opacity: 0.9;
+    }
+
+    /* Hero Image */
+    .hero-image {
+      flex: 1;
+      background-image: url("Gallery Images\\20251025_102831.jpg"); /* REPLACE WITH YOUR IMAGE PATH */
+      background-size: cover;
+      background-position: center;
+      min-height: 350px;
+    }
+
+    /* Bottom Gallery Section */
+    .gallery-section {
+      background-color: var(--dark-navy);
+      padding: 40px 20px 60px 20px;
+    }
+
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 12px;
+      height: 350px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Mobile Responsive Layout */
+    @media (max-width: 850px) {
+      .hero-split {
+        flex-direction: column;
+      }
+      .hero-text {
+        padding: 40px 25px;
+      }
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .nav-logo {
+        position: static;
+        transform: none;
+      }
+    }
+
+    /* Locations Grid (Maps Top, Details Bottom) */
+    .locations-section {
+      background-color: var(--dark-navy);
+      padding: 60px 20px;
+    }
+
+    .locations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+
+    .location-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .location-map {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .location-map iframe {
+      display: block;
+      width: 100%;
+    }
+
+    .location-details {
+      color: var(--white);
+    }
+
+    .location-details h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .location-details p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      color: #e2e8f0;
+    }
+
+    .location-details .directions-link {
+      display: inline-block;
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .location-details a:hover {
+      text-decoration: underline;
+    }
+
+    /* Ensure the list item anchors the absolute dropdown menu */
+    .nav-links li.dropdown {
+      position: relative;
+      padding-bottom: 10px; /* Bridge hover gap to the menu */
+      margin-bottom: -10px;
+    }
+
+    /* Dropdown Container */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-navy);
+      min-width: 220px;
+      list-style: none;
+      padding: 12px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+    }
+
+    /* Dropdown Links */
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    /* Link Hover Effect */
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show Dropdown on Hover */
+    .nav-links li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <!-- Dropdown Parent Item -->
+        <li class="dropdown">
+          <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
+          <!-- Submenu -->
+          <ul class="dropdown-menu">
+            <li><a href="film-production.html">Film & Production</a></li>
+            <li><a href="private-event.html">Private Events</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      
+      <div class="nav-logo">
+        <a href="home.html">
+          <img src="FirstSip_Bowl.png" alt="First Sip Matcha Logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Split Section -->
+  <section class="hero-split">
+    <div class="hero-text">
+      <p class="hero-subhead">Come have your <i>first sip</i> with us!</p>
+      <h1 class="hero-title">Why choose us?</h1>
+      
+      <ul class="hero-list">
+        <li>First-harvest matcha sourced from Shizuoka, Japan.</li>
+        <li>2-years of experience in high-volume markets and private events across Toronto and the GTA.</li>
+        <li>Carefully researched and developed drinks for delicious, balanced flavours.</li>
+        <li>Only quality ingredients for every cup served.</li>
+        <li>We take care of the details so you can enjoy your event.</li>
+      </ul>
+
+      <div class="btn-group">
+        <a href="catering_services.html" class="btn-solid">Catering Services</a>
+        <a href="#about" class="btn-outline">Learn more</a>
+      </div>
+    </div>
+
+    <!-- Main Right Image -->
+    <div class="hero-image"></div>
+  </section>
+
+  <!-- Bottom Image Gallery Section -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      <!-- Image Card 1 -->
+      <div class="gallery-item">
+        <img src="Gallery Images\20250705_083725.jpg" alt="Matcha Drink 1">
+      </div>
+      <!-- Image Card 2 -->
+      <div class="gallery-item">
+        <img src="Gallery Images\20260607_110757.jpg" alt="Matcha Drink 2">
+      </div>
+      <!-- Image Card 3 -->
+      <div class="gallery-item">
+        <img src="Gallery Images\20260314_104449_exported_63574.jpg" alt="Matcha Drink 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Locations Section -->
+  <section class="locations-section">
+    <div class="locations-container">
+      
+      <!-- Location 1: Junction Farmers Market -->
+      <div class="location-card">
+        <div class="location-map">
+          <!-- Junction Market Map Embed -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.674990924193!2d-79.4682413238217!3d43.66014497109861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3429a25b1283%3A0x1d61536f9829705f!2s275%20Keele%20St%2C%20Toronto%2C%20ON%20M6P%202K5!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca" 
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="location-details">
+          <h2>Location and Hours - Junction Farmers Market</h2>
+          <p class="address">
+            Junction Farmers Market<br>
+            275 Keele Street<br>
+            Toronto, ON M6P 2K5
+          </p>
+          <p class="hours">
+            Every Saturday from 9-1pm (except Sept 12th)
+          </p>
+        </div>
+      </div>
+
+      <!-- Location 2: Leslieville Farmers Market -->
+      <div class="location-card">
+        <div class="location-map">
+          <!-- Leslieville Market Map Embed -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5392134582!2d-79.33037992382283!3d43.66787687109724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb779d750bc3%3A0x8085a850e504c40b!2s150%20Greenwood%20Ave%2C%20Toronto%2C%20ON%20M4L%202P9!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca" 
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="location-details">
+          <h2>Location and Hours - Leslieville Farmers Market</h2>
+          <p class="address">
+            Leslieville Farmers Market<br>
+            150 Greenwood Avenue<br>
+            Toronto, ON M4L 2P9
+          </p>
+          <p class="hours">
+            Every Sunday from 9-2pm (except Sept 13th)
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
