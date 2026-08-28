@@ -200,44 +200,46 @@
       display: block;
     }
 
-    @media (max-width: 768px) {
-    /* 1. Navigation Header Adjustments */
-    header {
-      padding: 15px 20px;
-    }
+    @media (max-width: 850px) {
+      header {
+        padding: 15px 20px;
+      }
 
-    .nav-container {
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
-    }
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-    .nav-logo {
-      position: static; /* Removes absolute positioning so logo centers naturally */
-      transform: none;
-    }
+      .nav-logo {
+        position: relative;
+        left: auto;
+        transform: none;
+      }
 
-    .nav-logo img {
-      height: 50px; /* Scale down logo size */
-    }
+      .nav-logo img {
+        height: 50px;
+      }
 
-    .nav-links {
-      gap: 20px;
-    }
+      .hero-split {
+        flex-direction: column;
+      }
+
+      .hero-text {
+        padding: 40px 25px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
 
     /* 2. Mobile Dropdown Behavior */
     .nav-links li.dropdown {
       padding-bottom: 0;
       margin-bottom: 0;
-    }
-
-    .dropdown-menu {
-      position: static; /* Flow naturally inside header layout instead of floating */
-      width: 100%;
-      box-shadow: none;
-      background-color: rgba(0, 0, 0, 0.15);
-      border-radius: 8px;
-      margin-top: 8px;
     }
 
     /* 3. Section Containers Padding */
@@ -295,7 +297,7 @@
             <li><a href="private-event.html">Private Events</a></li>
           </ul>
         </li>
-        <li><a href="index.html#about">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
       
       <div class="nav-logo">
@@ -320,7 +322,7 @@
           <p class="card-description">
             Ready to elevate your production? We offer specialty matcha catering for film, television, commercial, and creative productions across Toronto and the GTA. We offer on-site beverage service for productions of all sizes, with flexible menus and professional setup, service, and teardown so your production team can focus on the shoot.
           </p>
-          <a href="film-production.html" class="btn-products">View products</a>
+          <a href="film-production.html" class="btn-products">Learn More</a>
         </div>
       </div>
 
@@ -334,7 +336,7 @@
           <p class="card-description">
             Whether you're hosting an intimate gathering or a large celebration, our packages are designed to make serving matcha simple and seamless so you can enjoy the event while we take care of the drinks.
           </p>
-          <a href="#" class="btn-products">View products</a>
+          <a href="private-event.html" class="btn-products">View Packages</a>
         </div>
       </div>
 

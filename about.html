@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | First Sip Matcha</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Variables matching index.html palette */
+    :root {
+      --dark-navy: #192a3e;
+      --light-bg: #edf2f7;
+      --text-dark: #192a3e;
+      --text-muted: #5a6b7c;
+      --white: #ffffff;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--dark-navy);
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* Top Navigation Header */
+    header {
+      background-color: var(--dark-navy);
+      padding: 30px 55px;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-logo img {
+      height: 70px;
+      display: block;
+    }
+
+    /* Hero Section (50/50 Split) */
+    .hero-split {
+      display: flex;
+      background-color: var(--light-bg);
+      min-height: 600px;
+    }
+
+    .hero-text {
+      flex: 1.1;
+      padding: 60px 8% 60px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    .about-bio p {
+      font-size: 1.02rem;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+      line-height: 1.65;
+    }
+
+    /* Founder Highlight Box */
+    .founder-note {
+      border-left: 3px solid var(--dark-navy);
+      padding-left: 16px;
+      margin: 20px 0;
+    }
+
+    /* Our Matcha Card */
+    .matcha-feature-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .matcha-feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .matcha-feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .hero-image {
+      flex: 0.9;
+      background-image: url("Gallery Images/20260808_074626.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 450px;
+    }
+
+    /* Dropdown Container */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-navy);
+      min-width: 220px;
+      list-style: none;
+      padding: 12px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+    }
+
+    /* Dropdown Links */
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    /* Link Hover Effect */
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show Dropdown on Hover */
+    .nav-links li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Mobile Responsive Layout */
+    @media (max-width: 850px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        position: relative;
+        left: auto;
+        transform: none;
+      }
+
+      .nav-logo img {
+        height: 50px;
+      }
+
+      .hero-split {
+        flex-direction: column;
+      }
+
+      .hero-text {
+        padding: 40px 25px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+    .nav-links li.dropdown {
+    position: relative;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="film-production.html">Film & Production</a></li>
+            <li><a href="private-event.html">Private Events</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="FirstSip_Bowl.png" alt="First Sip Matcha Logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Split Section -->
+  <section class="hero-split">
+    <div class="hero-text">
+      <span class="eyebrow">Toronto, ON • Est. 2024</span>
+      <h1 class="hero-title">About First Sip</h1>
+      
+      <div class="about-bio">
+        <p>
+          First Sip Matcha Bar is a Toronto-based specialty matcha bar bringing high-quality Japanese matcha and creative drinks to markets, events, and celebrations across the GTA.
+        </p>
+
+        <div class="founder-note">
+          <p>
+            <strong>I'm Jennifer, the founder of First Sip.</strong> What started as a small passion project has grown in ways I honestly never imagined. I started First Sip because of my love for matcha, and over the past few years, it has become so much more than just selling drinks.
+          </p>
+        </div>
+
+        <p>
+          My background is in biomedical computing (AI and medical imaging). On the weekends, instead of working in a lab, you'll find me setting up our booth, whisking matcha, and serving drinks to the Toronto community.
+        </p>
+
+        <p>
+          From the Junction and Leslieville farmers' markets to private events and productions across the city, I'm grateful to meet so many amazing people and build something of my own.
+        </p>
+      </div>
+
+      <!-- Feature Card for Matcha -->
+      <div class="matcha-feature-card">
+        <h3>Our Matcha</h3>
+        <p>
+          Our signature matcha is a single-cultivar <strong>Yabukita</strong> from Shizuoka, Japan. It features a vibrant green color, rich vegetal notes, subtle cocoa undertones, and a smooth, floral finish.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Image Section -->
+    <div class="hero-image"></div>
+  </section>
+
+</body>
+</html>

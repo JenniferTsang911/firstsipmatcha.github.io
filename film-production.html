@@ -439,44 +439,46 @@
       display: block;
     }
 
-    @media (max-width: 768px) {
-  /* 1. Navigation Header Adjustments */
-    header {
-      padding: 15px 20px;
-    }
+    @media (max-width: 850px) {
+      header {
+        padding: 15px 20px;
+      }
 
-    .nav-container {
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
-    }
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-    .nav-logo {
-      position: static; /* Removes absolute positioning so logo centers naturally */
-      transform: none;
-    }
+      .nav-logo {
+        position: relative;
+        left: auto;
+        transform: none;
+      }
 
-    .nav-logo img {
-      height: 50px; /* Scale down logo size */
-    }
+      .nav-logo img {
+        height: 50px;
+      }
 
-    .nav-links {
-      gap: 20px;
-    }
+      .hero-split {
+        flex-direction: column;
+      }
+
+      .hero-text {
+        padding: 40px 25px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
 
     /* 2. Mobile Dropdown Behavior */
     .nav-links li.dropdown {
       padding-bottom: 0;
       margin-bottom: 0;
-    }
-
-    .dropdown-menu {
-      position: static; /* Flow naturally inside header layout instead of floating */
-      width: 100%;
-      box-shadow: none;
-      background-color: rgba(0, 0, 0, 0.15);
-      border-radius: 8px;
-      margin-top: 8px;
     }
 
     /* 3. Section Containers Padding */
@@ -494,6 +496,10 @@
 
     /* 5. Mobile Photo Grid (2x2 Layout) */
     .photo-grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .photo-grid-5 {
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
@@ -533,7 +539,7 @@
             <li><a href="private-event.html">Private Events</a></li>
           </ul>
         </li>
-        <li><a href="index.html#about">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
       
       <div class="nav-logo">
@@ -643,7 +649,7 @@
     <div class="details-block">
       <p><strong>Every First Sip Includes:</strong></p>
       <ul class="bullet-list">
-        <li><strong>12 oz</strong> serving sizes</li>
+        <li><strong>12 oz</strong> serving sizes.</li>
         <li><strong>Milk options:</strong> Dairy and Oat Milk included.</li>
         <li><strong>Full Service:</strong> Complete setup and teardown for your event.</li>
         <li><strong>Professional service staff:</strong> Staffing is scaled according to production size and service requirements.</li>
@@ -690,8 +696,10 @@
   <!-- Secondary Photo Strip -->
   <div class="section-container" style="padding-top: 0; padding-bottom: 0;">
     <div class="photo-grid-4">
-      <div class="photo-card"><img src="Gallery Images/20260808_083750.jpg" alt="Specialty Latte"></div>
-      <div class="photo-card"><img src="Gallery Images/20260607_110757.jpg" alt="Iced Matcha"></div>
+      <div class="photo-card">
+        <img src="Gallery Images/20260808_083750.jpg" alt="Specialty Latte" style="object-fit: cover; object-position: center 75%;">
+      </div>
+      <div class="photo-card"><img src="Gallery Images/20260607_110757.jpg" alt="Iced Matcha" style="object-fit: cover; object-position: center 40%;"></div>
       <div class="photo-card"><img src="Gallery Images/20260531_091415.jpg" alt="Two Matcha Lattes"></div>
       <div class="photo-card"><img src="Gallery Images/20260705_092430.jpg" alt="Cheers Matcha Drinks"></div>
     </div>
