@@ -15,7 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
       --dark-navy: #192a3e;
@@ -785,6 +785,101 @@
       defaultHour: 10
     });
   </script>
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- Email Contact -->
+      <div class="footer-email">
+        <i class="fa-regular fa-envelope"></i>
+        <a href="mailto:info@firstsipmatcha.com">info@firstsipmatcha.com</a>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="footer-socials">
+        <a href="https://instagram.com/firstsipmatcha" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@firstsipmatcha" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <style>
+    /* Footer Styling */
+    .site-footer {
+      background-color: #111d2b; /* Slightly darker than dark-navy */
+      color: #ffffff;
+      padding: 40px 20px 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    /* Email Link */
+    .footer-email {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-email a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-email a:hover {
+      opacity: 0.8;
+    }
+
+    /* Social Icons */
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-socials a {
+      color: #ffffff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .footer-socials a:hover {
+      background-color: #ffffff;
+      color: #192a3e; /* Theme Navy */
+      transform: translateY(-2px);
+    }
+
+    /* Copyright Text */
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #8b9bb0;
+      margin-top: 10px;
+    }
+  </style>
+
 
 </body>
 </html>

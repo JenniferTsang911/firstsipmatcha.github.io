@@ -14,8 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <style>
     :root {
       --dark-navy: #192a3e;
@@ -84,7 +85,7 @@
     .section-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 24 20px;
+      padding: 24px 20px;
     }
 
     h2.section-heading {
@@ -94,7 +95,7 @@
       margin-bottom: 24px;
     }
 
-    /* Photo Grids / Carousels */
+    /* Photo Grids */
     .photo-grid-5 {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -124,7 +125,7 @@
       display: block;
     }
 
-    /* Custom Bullet Lists */
+    /* Bullet Lists */
     ul.bullet-list {
       list-style: none;
       margin-left: 0;
@@ -146,7 +147,7 @@
       font-weight: bold;
     }
 
-    /* Modern Pricing Cards Grid */
+    /* Pricing Cards Grid */
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -173,7 +174,6 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     }
 
-    /* Featured / Most Popular Highlight */
     .pricing-card.popular {
       border: 2px solid var(--dark-navy);
     }
@@ -213,20 +213,14 @@
       letter-spacing: -1px;
     }
 
-    .card-price-wrap .sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
     .card-subtitle {
       font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.4;
       margin-bottom: 24px;
-      min-height: 50px; /* Aligns content across cards */
+      min-height: 50px;
     }
 
-    /* Card Button */
     .btn-card-select {
       display: block;
       text-align: center;
@@ -258,7 +252,6 @@
       opacity: 0.9;
     }
 
-    /* Features List with Checkmarks */
     .card-divider {
       border: none;
       border-top: 1px solid #e2e8f0;
@@ -288,7 +281,6 @@
       color: var(--text-dark);
     }
 
-    /* Checkmark Icon */
     ul.check-list li::before {
       content: "✓";
       position: absolute;
@@ -299,15 +291,6 @@
       font-size: 0.95rem;
     }
 
-    /* Responsive adjustment */
-    @media (max-width: 900px) {
-      .packages-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    /* Add-ons & Menu Lists */
     .details-block {
       font-size: 0.95rem;
       margin-bottom: 35px;
@@ -359,16 +342,6 @@
       resize: vertical;
     }
 
-    .form-disclaimer {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .form-disclaimer a {
-      color: var(--text-muted);
-    }
-
     .btn-submit {
       align-self: flex-start;
       background-color: #6c7a89;
@@ -386,24 +359,13 @@
       background-color: var(--dark-navy);
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .packages-grid, .photo-grid-5, .photo-grid-4 {
-        grid-template-columns: 1fr;
-      }
-      .quote-section {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Ensure the list item anchors the absolute dropdown menu */
+    /* Navigation Dropdowns */
     .nav-links li.dropdown {
       position: relative;
-      padding-bottom: 10px; /* Bridge hover gap to the menu */
+      padding-bottom: 10px;
       margin-bottom: -10px;
     }
 
-    /* Dropdown Container */
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -418,7 +380,6 @@
       z-index: 1000;
     }
 
-    /* Dropdown Links */
     .dropdown-menu li a {
       display: block;
       padding: 10px 20px;
@@ -429,16 +390,15 @@
       transition: background 0.2s ease;
     }
 
-    /* Link Hover Effect */
     .dropdown-menu li a:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Show Dropdown on Hover */
     .nav-links li.dropdown:hover .dropdown-menu {
       display: block;
     }
 
+    /* Responsive adjustments */
     @media (max-width: 850px) {
       header {
         padding: 15px 20px;
@@ -459,69 +419,106 @@
         height: 50px;
       }
 
-      .hero-split {
-        flex-direction: column;
+      .nav-links li.dropdown {
+        padding-bottom: 0;
+        margin-bottom: 0;
       }
 
-      .hero-text {
-        padding: 40px 25px;
+      .section-container {
+        padding: 24px 16px;
       }
 
-      .hero-title {
-        font-size: 2.2rem;
+      .packages-grid, 
+      .quote-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
 
-      .hero-image {
-        height: 350px;
+      .photo-grid-4,
+      .photo-grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
 
-    /* 2. Mobile Dropdown Behavior */
-    .nav-links li.dropdown {
-      padding-bottom: 0;
-      margin-bottom: 0;
+      .photo-card {
+        height: 160px;
+      }
+
+      h2.section-heading {
+        font-size: 1.4rem;
+      }
+
+      .btn-submit {
+        width: 100%;
+      }
     }
 
-    /* 3. Section Containers Padding */
-    .section-container {
-      padding: 24px 16px;
+    /* Footer Styling */
+    .site-footer {
+      background-color: #111d2b;
+      color: #ffffff;
+      padding: 40px 20px 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* 4. Force Single-Column Layouts */
-    .hero-split, 
-    .packages-grid, 
-    .quote-section {
-      grid-template-columns: 1fr;
-      gap: 24px;
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
     }
 
-    /* 5. Mobile Photo Grid (2x2 Layout) */
-    .photo-grid-4 {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    .photo-grid-5 {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+    .footer-email {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
     }
 
-    .photo-card {
-      height: 160px;
+    .footer-email a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
     }
 
-    /* 6. Typography Adjustments */
-    h2.section-heading {
-      font-size: 1.4rem;
+    .footer-email a:hover {
+      opacity: 0.8;
     }
 
-    .hero-image {
-      height: 250px;
+    .footer-socials {
+      display: flex;
+      gap: 20px;
     }
 
-    /* 7. Full-width form buttons */
-    .btn-submit {
-      width: 100%;
+    .footer-socials a {
+      color: #ffffff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
-  }
+
+    .footer-socials a:hover {
+      background-color: #ffffff;
+      color: #192a3e;
+      transform: translateY(-2px);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #8b9bb0;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -530,10 +527,8 @@
   <header>
     <div class="nav-container">
       <ul class="nav-links">
-        <!-- Dropdown Parent Item -->
         <li class="dropdown">
           <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
-          <!-- Submenu -->
           <ul class="dropdown-menu">
             <li><a href="film-production.html">Film & Production</a></li>
             <li><a href="private-event.html">Private Events</a></li>
@@ -553,9 +548,9 @@
   <!-- Photo Gallery Strip Top -->
   <div class="section-container" style="padding-bottom: 0;">
     <div class="photo-grid-5">
-      <div class="photo-card"><img src="Gallery Images\20260711_100650.jpg" alt="Production Matcha Drink"></div>
-      <div class="photo-card"><img src="Gallery Images\20260314_104449_exported_63574.jpg" alt="Preparing Drinks"></div>
-      <div class="photo-card"><img src="Gallery Images\20260530_081037.jpg" alt="Matcha Bar Setup"></div>
+      <div class="photo-card"><img src="Gallery Images/20260711_100650.jpg" alt="Production Matcha Drink"></div>
+      <div class="photo-card"><img src="Gallery Images/20260314_104449_exported_63574.jpg" alt="Preparing Drinks"></div>
+      <div class="photo-card"><img src="Gallery Images/20260530_081037.jpg" alt="Matcha Bar Setup"></div>
       <div class="photo-card"><img src="Gallery Images/20260605_183055.jpg" alt="On Set Team"></div>
       <div class="photo-card"><img src="Gallery Images/20250927_091757.jpg" alt="Whisking Matcha"></div>
     </div>
@@ -575,77 +570,75 @@
 
   <!-- Production Packages Section -->
   <section class="section-container">
-  <h2 class="section-heading">Production Packages</h2>
-  
-  <div class="packages-grid">
+    <h2 class="section-heading">Production Packages</h2>
     
-    <!-- Package 1 -->
-    <div class="pricing-card">
-      <h3 class="card-plan-title">On-Set Matcha Bar</h3>
-      <div class="card-price-wrap">
-        <span class="price">$650</span>
+    <div class="packages-grid">
+      <!-- Package 1 -->
+      <div class="pricing-card">
+        <h3 class="card-plan-title">On-Set Matcha Bar</h3>
+        <div class="card-price-wrap">
+          <span class="price">$650</span>
+        </div>
+        <p class="card-subtitle"><i>Ideal for smaller crews, commercial shoots, photo productions, and short production days.</i></p>
+        
+        <a href="#quote-form" class="btn-card-select outline">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>50</strong> drinks</li>
+          <li><strong>1.5</strong> hours of service</li>
+          <li>1 service staff</li>
+          <li>Choice of 2 signature flavours</li>
+        </ul>
       </div>
-      <p class="card-subtitle"><i>Ideal for smaller crews, commercial shoots, photo productions, and short production days.</i></p>
-      
-      <a href="#quote-form" class="btn-card-select outline">Select package</a>
-      
-      <hr class="card-divider">
-      <div class="features-label">Includes</div>
-      
-      <ul class="check-list">
-        <li>Up to <strong>50</strong> drinks</li>
-        <li><strong>1.5</strong> hours of service</li>
-        <li>1 service staff</li>
-        <li>Choice of 2 signature flavours</li>
-      </ul>
+
+      <!-- Package 2 -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3 class="card-plan-title">Production Matcha Bar</h3>
+        <div class="card-price-wrap">
+          <span class="price">$1,250</span>
+        </div>
+        <p class="card-subtitle"><i>Our most popular format for mid-sized productions and longer service windows.</i></p>
+        
+        <a href="#quote-form" class="btn-card-select solid">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>100</strong> drinks</li>
+          <li><strong>2</strong> hours of service</li>
+          <li>2 service staff</li>
+          <li>Choice of 3 signature flavours</li>
+        </ul>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="pricing-card">
+        <h3 class="card-plan-title">High-Volume Production</h3>
+        <div class="card-price-wrap">
+          <span class="price">$2,350</span>
+        </div>
+        <p class="card-subtitle"><i>Designed for large crews, full-day productions, commercial sets, and high-volume service.</i></p>
+        
+        <a href="#quote-form" class="btn-card-select outline">Select package</a>
+        
+        <hr class="card-divider">
+        <div class="features-label">Includes</div>
+        
+        <ul class="check-list">
+          <li>Up to <strong>200</strong> drinks</li>
+          <li><strong>3</strong> hours of service</li>
+          <li><strong>2-3</strong> service staff</li>
+          <li>Choice of 4 signature flavours</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Package 2 (Most Popular Highlighted) -->
-    <div class="pricing-card popular">
-      <div class="popular-badge">Most Popular</div>
-      <h3 class="card-plan-title">Production Matcha Bar</h3>
-      <div class="card-price-wrap">
-        <span class="price">$1,250</span>
-      </div>
-      <p class="card-subtitle"><i>Our most popular format for mid-sized productions and longer service windows.</i></p>
-      
-      <a href="#quote-form" class="btn-card-select solid">Select package</a>
-      
-      <hr class="card-divider">
-      <div class="features-label">Includes</div>
-      
-      <ul class="check-list">
-        <li>Up to <strong>100</strong> drinks</li>
-        <li><strong>2</strong> hours of service</li>
-        <li>2 service staff</li>
-        <li>Choice of 3 signature flavours</li>
-      </ul>
-    </div>
-
-    <!-- Package 3 -->
-    <div class="pricing-card">
-      <h3 class="card-plan-title">High-Volume Production</h3>
-      <div class="card-price-wrap">
-        <span class="price">$2,350</span>
-      </div>
-      <p class="card-subtitle"><i>Designed for large crews, full-day productions, commercial sets, and high-volume service.</i></p>
-      
-      <a href="#quote-form" class="btn-card-select outline">Select package</a>
-      
-      <hr class="card-divider">
-      <div class="features-label">Includes</div>
-      
-      <ul class="check-list">
-        <li>Up to <strong>200</strong> drinks</li>
-        <li><strong>3</strong> hours of service</li>
-        <li><strong>2-3</strong> service staff</li>
-        <li>Choice of 4 signature flavours</li>
-      </ul>
-    </div>
-
-    </div> <!-- Closes .packages-grid -->
-
-    <!-- Placed below the grid so it spans full width -->
+    <!-- Every First Sip Includes Block -->
     <div class="details-block">
       <p><strong>Every First Sip Includes:</strong></p>
       <ul class="bullet-list">
@@ -656,6 +649,7 @@
         <li><strong>Complete beverage preparation:</strong> We bring the ingredients and equipment required for service.</li>
       </ul>
     </div>
+  </section>
 
   <!-- Menu Section -->
   <section class="section-container">
@@ -707,7 +701,7 @@
 
   <!-- Venue / Production Requirements -->
   <section class="section-container">
-    <h2 class="section-heading">Venue/ Production Requirements</h2>
+    <h2 class="section-heading">Venue / Production Requirements</h2>
     <p style="margin-bottom: 12px; font-style: italic; color: var(--text-muted);">
       To ensure the best experience for your production, we require the following from the venue:
     </p>
@@ -719,25 +713,17 @@
   </section>
 
   <!-- Request a Quote Section with Form -->
-  <section class="section-container", id="quote-form">
+  <section class="section-container" id="quote-form">
     <div class="quote-section">
-      
       <div>
         <h2 class="section-heading">Request a Quote Today!</h2>
       </div>
 
       <form class="quote-form-container" action="https://api.web3forms.com/submit" method="POST">
-  
-        <!-- 1. YOUR WEB3FORMS ACCESS KEY (REPLACE WITH YOUR ACTUAL KEY) -->
         <input type="hidden" name="access_key" value="d7b7741e-f0a0-4061-9b95-5ab1167838ed">
-
-        <!-- Optional: Customize Email Subject Line -->
         <input type="hidden" name="subject" value="New Film & Production Quote Request">
-
-        <!-- Optional: Prevent Spam with a Hidden Honeypot Field -->
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-        <!-- Form Fields (Make sure each field has a unique 'name' attribute) -->
         <div class="form-group">
           <input type="text" name="Full Name" class="form-control" placeholder="Full name *" required>
         </div>
@@ -780,28 +766,48 @@
 
         <button type="submit" class="btn-submit">Submit</button>
       </form>
-
     </div>
   </section>
 
   <script>
     flatpickr("#production-dates", {
-      mode: "range",            /* Allows selecting single dates or ranges */
-      dateFormat: "Y-m-d",      /* Formats as 2026-08-26 */
-      minDate: "today",         /* Prevents picking past dates */
+      mode: "range",
+      dateFormat: "Y-m-d",
+      minDate: "today",
       showMonths: 1,
       locale: {
-        rangeSeparator: " to "  /* Shows "2026-09-01 to 2026-09-03" when a range is picked */
-      }    });
-    flatpickr("#desired-start-time", {
-      enableTime: true,        /* Enables time selection */
-      noCalendar: true,        /* Hides the calendar view */
-      dateFormat: "h:i K",     /* Displays as "9:00 AM" or "2:30 PM" */
-      minuteIncrement: 15,     /* Locks choices to 15-minute intervals */
-      defaultHour: 9           /* Opens defaulting to 9:00 AM */
+        rangeSeparator: " to "
+      }
     });
 
+    flatpickr("#desired-start-time", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "h:i K",
+      minuteIncrement: 15,
+      defaultHour: 9
+    });
   </script>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-email">
+        <i class="fa-regular fa-envelope"></i>
+        <a href="mailto:info@firstsipmatcha.com">info@firstsipmatcha.com</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://instagram.com/firstsipmatcha" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@firstsipmatcha" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+      
+    </div>
+  </footer>
 
 </body>
 </html>
