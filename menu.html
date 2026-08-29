@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - First Sip Matcha</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --dark-navy: #192a3e;
+      --light-bg: #edf2f7;
+      --text-dark: #192a3e;
+      --text-muted: #4a5568;
+      --white: #ffffff;
+      --card-border: #e2e8f0;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Header */
+    header {
+      background-color: var(--dark-navy);
+      padding: 30px 55px;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-logo img {
+      height: 70px;
+      display: block;
+    }
+
+    /* Navigation Dropdowns */
+    .nav-links li.dropdown {
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: -10px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--dark-navy);
+      min-width: 220px;
+      list-style: none;
+      padding: 12px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 4px 4px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Main Container Structure */
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h2.section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .category-section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+      margin-top: 30px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #cbd5e1;
+    }
+
+    /* Menu Cards Grid Layout */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .menu-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-card-img {
+      height: 260px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .menu-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menu-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .menu-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .menu-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Bullet List Component */
+    ul.bullet-list {
+      list-style: none;
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: var(--dark-navy);
+    }
+
+    /* Custom Sip Callout Box */
+    .custom-sip-box {
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .custom-sip-box h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark-navy);
+      margin-bottom: 6px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 850px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        position: relative;
+        left: auto;
+        transform: none;
+      }
+
+      .nav-logo img {
+        height: 50px;
+      }
+
+      .section-container {
+        padding: 24px 16px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .menu-card-img {
+        height: 160px;
+      }
+
+      h2.section-heading {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer Styling */
+    .site-footer {
+      background-color: #111d2b;
+      color: #ffffff;
+      padding: 40px 20px 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-email {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-email a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-email a:hover {
+      opacity: 0.8;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-socials a {
+      color: #ffffff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .footer-socials a:hover {
+      background-color: #ffffff;
+      color: #192a3e;
+      transform: translateY(-2px);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #8b9bb0;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a href="catering_services.html" class="dropdown-trigger">Catering Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="film-production.html">Film & Production</a></li>
+            <li><a href="private-event.html">Private Events</a></li>
+          </ul>
+        </li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="FirstSip_Bowl.png" alt="First Sip Matcha Logo">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Menu Grid Section -->
+  <main class="section-container">
+    <h2 class="section-heading">Our Beverage Menu</h2>
+    <p style="margin-bottom: 24px; color: var(--text-muted);">
+      Every drink is prepared live on site. All drinks are available with <strong>Dairy</strong> or <strong>Oat Milk</strong>.
+    </p>
+
+    <!-- Classic Menu Section -->
+    <h3 class="category-section-title">Classic Menu</h3>
+    <div class="menu-grid">
+      
+      <!-- Card 1 -->
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="Gallery Images/20260712_091840.jpg" alt="Classic Matcha Latte" style="transform: scale(1.2); object-position: center 45%;">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">Classic Matcha Latte</div>
+          <p class="menu-card-desc">Smooth and creamy matcha latte made with a high-quality blend from Shizuoka, Japan.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="Gallery Images/20260711_100650.jpg" alt="Strawberry Matcha Latte" style= "object-position: center 55%;">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">Strawberry Matcha Latte</div>
+          <p class="menu-card-desc">Fresh strawberry puree combined with hand-whisked matcha from Shizuoka, Japan. Also available in as our cold-foam option.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="Gallery Images/20260607_110757.jpg" alt="Mango Matcha Latte" style="transform: scale(1.2); object-position: center 40%;">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">Mango Matcha Latte</div>
+          <p class="menu-card-desc">Kesar mango puree combined with hand-whisked matcha from Shizuoka, Japan.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Seasonal & Specialty Section -->
+    <h3 class="category-section-title">Seasonal & Specialty Flavours</h3>
+    <div class="menu-grid">
+      
+      <!-- Card 4 -->
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="Gallery Images/20260808_083750.jpg" alt="Banana bread Matcha Latte" style= "object-position: center 70%;">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">Banana Bread Matcha Latte</div>
+          <p class="menu-card-desc">Housemade banana puree topped with a vanilla cold-foam toffee bits.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="Gallery Images\20260710_135020.jpg" alt="Cookie Butter Matcha Latte" style="transform: scale(1.1); object-position: center 65%;">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">Lychee Matcha Soda</div>
+          <p class="menu-card-desc">Lychee puree combined with carbonated water and matcha from Shizuoka, Japan.</p>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+    <!-- Additional Seasonal Lineup Bullet List -->
+    <div style="margin-top: 20px;">
+      <p style="font-weight: 700; margin-bottom: 10px; color: var(--dark-navy);">Other Seasonal Menu Offerings:</p>
+      <ul class="bullet-list">
+        <li><strong>White Mocha Matcha Latte</strong></li>
+        <li><strong>Pumpkin-Spiced Matcha Latte</strong> <em>(Available as cold foam)</em></li>
+        <li><strong>Pandan Matcha Latte</strong></li>
+        <li><strong>Black Sesame Matcha Latte</strong> <em>(Available as cold foam)</em></li>
+        <li><strong>Double Matcha Matcha Latte</strong></li>
+        <li><strong>Coconut Matcha Cloud</strong></li>
+      </ul>
+    </div>
+
+    <!-- Custom Sip Callout Box -->
+    <div class="custom-sip-box">
+      <h3>The "Custom Sip" - $150 / Flavour</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Have a drink in mind that's not listed? We offer custom drink development, including R&D, recipe testing, and ingredient sourcing, to create a signature drink exclusive to your event.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-email">
+        <i class="fa-regular fa-envelope"></i>
+        <a href="mailto:info@firstsipmatcha.com">info@firstsipmatcha.com</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://instagram.com/firstsipmatcha" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@firstsipmatcha" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+      
+      <p class="footer-copy">&copy; 2026 First Sip Matcha. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
