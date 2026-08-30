@@ -8,10 +8,10 @@
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <style>
-    /* Global Variables matching index.html palette */
     :root {
       --dark-navy: #192a3e;
       --light-bg: #edf2f7;
@@ -29,9 +29,9 @@
 
     body {
       font-family: var(--font-family);
-      background-color: var(--dark-navy);
+      background-color: var(--light-bg);
       color: var(--text-dark);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* Top Navigation Header */
@@ -73,86 +73,7 @@
       display: block;
     }
 
-    /* Hero Section (50/50 Split) */
-    .hero-split {
-      display: flex;
-      background-color: var(--light-bg);
-      min-height: 600px;
-    }
-
-    .hero-text {
-      flex: 1.1;
-      padding: 60px 8% 60px 8%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 24px;
-    }
-
-    .about-bio p {
-      font-size: 1.02rem;
-      color: var(--text-dark);
-      margin-bottom: 18px;
-      line-height: 1.65;
-    }
-
-    /* Founder Highlight Box */
-    .founder-note {
-      border-left: 3px solid var(--dark-navy);
-      padding-left: 16px;
-      margin: 20px 0;
-    }
-
-    /* Our Matcha Card */
-    .matcha-feature-card {
-      background-color: var(--white);
-      border-radius: 12px;
-      padding: 24px;
-      margin-top: 24px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .matcha-feature-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .matcha-feature-card p {
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
-
-    .hero-image {
-      flex: 0.9;
-      background-image: url("Gallery Images/20260808_074626.jpg");
-      background-size: cover;
-      background-position: center;
-      min-height: 450px;
-    }
-
-    /* Dropdown Container */
+    /* Dropdown Menu */
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -167,7 +88,6 @@
       z-index: 1000;
     }
 
-    /* Dropdown Links */
     .dropdown-menu li a {
       display: block;
       padding: 10px 20px;
@@ -178,17 +98,124 @@
       transition: background 0.2s ease;
     }
 
-    /* Link Hover Effect */
     .dropdown-menu li a:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Show Dropdown on Hover */
     .nav-links li.dropdown:hover .dropdown-menu {
       display: block;
     }
 
-    /* Mobile Responsive Layout */
+    /* Section 1: Hero Founder Bio Split */
+    .hero-split {
+      display: flex;
+      background-color: var(--light-bg);
+      min-height: 520px;
+    }
+
+    .hero-text {
+      flex: 1.1;
+      padding: 60px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    .about-bio p {
+      font-size: 1.02rem;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+    }
+
+    .founder-note {
+      border-left: 3px solid var(--dark-navy);
+      padding-left: 16px;
+      margin: 20px 0;
+    }
+
+    .hero-image {
+      flex: 0.9;
+      background-image: url("Gallery Images/20260815_082711.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 450px;
+    }
+
+    /* Section 2 & 3: Alternating Story Bands */
+    .story-band {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      min-height: 420px;
+    }
+
+    .story-band.dark-bg {
+      background-color: var(--white);
+    }
+
+    .story-band.light-bg {
+      background-color: var(--light-bg);
+    }
+
+    .story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+    .story-text-content {
+      flex: 1;
+      padding: 60px 50px;
+    }
+
+    .story-text-content .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .story-text-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .story-text-content p {
+      font-size: 1rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .story-image-content {
+      flex: 1;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .story-image-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Mobile Responsiveness */
     @media (max-width: 850px) {
       header {
         padding: 15px 20px;
@@ -209,11 +236,11 @@
         height: 50px;
       }
 
-      .hero-split {
+      .hero-split, .story-container {
         flex-direction: column;
       }
 
-      .hero-text {
+      .hero-text, .story-text-content {
         padding: 40px 25px;
       }
 
@@ -221,12 +248,74 @@
         font-size: 2.2rem;
       }
 
-      .hero-image {
-        height: 350px;
+      .story-text-content h2 {
+        font-size: 1.6rem;
       }
-    .nav-links li.dropdown {
-    position: relative;
-        }
+
+      .hero-image, .story-image-content {
+        width: 100%;
+        height: 300px;
+      }
+
+      /* Stack image above text on reverse mobile rows */
+      .story-container.reverse-mobile {
+        flex-direction: column-reverse;
+      }
+    }
+
+    /* Footer Styling */
+    .site-footer {
+      background-color: #111d2b;
+      color: #ffffff;
+      padding: 40px 20px 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-email {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-email a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-socials a {
+      color: #ffffff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #8b9bb0;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -255,7 +344,7 @@
     </div>
   </header>
 
-  <!-- Hero Split Section -->
+  <!-- SECTION 1: Founder Bio Hero Split -->
   <section class="hero-split">
     <div class="hero-text">
       <h1 class="hero-title">About First Sip</h1>
@@ -279,31 +368,50 @@
           From the Junction and Leslieville farmers' markets to private events and productions across the city, I'm grateful to meet so many amazing people and build something of my own.
         </p>
       </div>
+    </div>
 
-      <!-- Feature Card for Matcha -->
-      <div class="matcha-feature-card">
-        <h3>Our Matcha</h3>
+    <!-- Right Hero Image (Founder Photo) -->
+    <div class="hero-image"></div>
+  </section>
+
+  <!-- SECTION 2: Our Matcha & Origin (Full Width Band - Image Left, Text Right) -->
+  <section class="story-band dark-bg">
+    <div class="story-container reverse-mobile">
+      <div class="story-image-content">
+        <img src="Gallery Images/vlcsnap-2026-08-29-20h02m14s863.png" alt="Whisking Ceremonial Japanese Matcha">
+      </div>
+      <div class="story-text-content">
+
+        <h2>Our Matcha & Origins</h2>
         <p>
-          Our signature matcha is a single-cultivar <strong>Yabukita</strong> from Shizuoka, Japan. It features a vibrant green color, rich vegetal notes, subtle cocoa undertones, and a smooth, floral finish.
+          Our signature matcha is a single-cultivar <strong>Yabukita</strong> sourced from Shizuoka, Japan, with vegetal notes, subtle cocoa, and a floral finish. We whisk every serving fresh to order.
         </p>
       </div>
     </div>
+  </section>
 
-    <!-- Right Image Section -->
-    <div class="hero-image"></div>
+  <!-- SECTION 3: House-Made Ingredients (Full Width Band - Text Left, Image Right) -->
+  <section class="story-band light-bg">
+    <div class="story-container">
+      <div class="story-text-content">
+        <h2>House-Made Syrups</h2>
+        <p>
+          Where possible, our syrups are natural and locally sourced ingredients. Every batch is made in-house without artificial flavors, preservatives, or additives.        </p>
+      </div>
+      <div class="story-image-content">
+        <img src="Gallery Images/20260601_204042.jpg" alt="House-made syrups and fruit reductions">
+      </div>
+    </div>
   </section>
 
   <!-- Footer Section -->
   <footer class="site-footer">
     <div class="footer-container">
-      
-      <!-- Email Contact -->
       <div class="footer-email">
         <i class="fa-regular fa-envelope"></i>
         <a href="mailto:info@firstsipmatcha.com">info@firstsipmatcha.com</a>
       </div>
 
-      <!-- Social Media Links -->
       <div class="footer-socials">
         <a href="https://instagram.com/firstsipmatcha" target="_blank" rel="noopener" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
@@ -313,80 +421,9 @@
         </a>
       </div>
 
+      <p class="footer-copy">&copy; 2026 First Sip Matcha. All rights reserved.</p>
     </div>
   </footer>
-
-  <style>
-    /* Footer Styling */
-    .site-footer {
-      background-color: #111d2b; /* Slightly darker than dark-navy */
-      color: #ffffff;
-      padding: 40px 20px 25px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
-    }
-
-    /* Email Link */
-    .footer-email {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.95rem;
-    }
-
-    .footer-email a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.2s ease;
-    }
-
-    .footer-email a:hover {
-      opacity: 0.8;
-    }
-
-    /* Social Icons */
-    .footer-socials {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-socials a {
-      color: #ffffff;
-      font-size: 1.3rem;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .footer-socials a:hover {
-      background-color: #ffffff;
-      color: #192a3e; /* Theme Navy */
-      transform: translateY(-2px);
-    }
-
-    /* Copyright Text */
-    .footer-copy {
-      font-size: 0.8rem;
-      color: #8b9bb0;
-      margin-top: 10px;
-    }
-  </style>
 
 </body>
 </html>
