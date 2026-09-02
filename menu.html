@@ -230,7 +230,7 @@
       margin-bottom: 6px;
     }
 
-    /* Responsive adjustments */
+    /* Mobile Responsive Adjustments */
     @media (max-width: 850px) {
       header {
         padding: 15px 20px;
@@ -260,8 +260,10 @@
         gap: 16px;
       }
 
+      /* Force 1:1 square ratio for 2-column mobile layout */
       .menu-card-img {
-        height: 160px;
+        height: auto;
+        aspect-ratio: 1 / 1;
       }
 
       h2.section-heading {
@@ -272,6 +274,12 @@
     @media (max-width: 550px) {
       .menu-grid {
         grid-template-columns: 1fr;
+      }
+
+      /* Force 1:1 square ratio when single-column on small screens */
+      .menu-card-img {
+        height: auto;
+        aspect-ratio: 1 / 1;
       }
     }
 
@@ -418,7 +426,7 @@
       <!-- Card 4 -->
       <div class="menu-card">
         <div class="menu-card-img">
-          <img src="Gallery Images/20260829_083649.jpg" alt="Banana bread Matcha Latte" style= "object-position: center 60%;">
+          <img src="Gallery Images/20260830_095550.jpg" alt="Hojicha Matcha Latte" style= "transform: scale(1.2); object-position: center 60%;">
         </div>
         <div class="menu-card-body">
           <div class="menu-card-title">Hojicha Latte</div>
@@ -428,7 +436,7 @@
       <!-- Card 5 -->
       <div class="menu-card">
         <div class="menu-card-img">
-          <img src="Gallery Images\20260808_083750.jpg" alt="Cookie Butter Matcha Latte" style= "object-position: center 70%;">
+          <img src="Gallery Images\20260829_111810.jpg" alt="Banana Matcha Latte" style= "transform: scale(1.2); object-position: center 40%;">
         </div>
         <div class="menu-card-body">
           <div class="menu-card-title">Banana Bread Matcha Latte</div>
@@ -437,7 +445,7 @@
         </div>
             <div class="menu-card">
         <div class="menu-card-img">
-          <img src="Gallery Images\20260710_135020.jpg" alt="Cookie Butter Matcha Latte" style="transform: scale(1.1); object-position: center 65%;">
+          <img src="Gallery Images\20260710_135020.jpg" alt="Lychee Matcha Latte" style="transform: scale(1.1); object-position: center 65%;">
         </div>
         <div class="menu-card-body">
           <div class="menu-card-title">Lychee Matcha Soda</div>

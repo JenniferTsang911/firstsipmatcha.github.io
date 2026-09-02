@@ -387,11 +387,20 @@
 
     /* Responsive adjustments */
     @media (max-width: 900px) {
-      .hero-split, .packages-grid, .photo-grid-4, .quote-section {
+      .hero-split, 
+      .packages-grid, 
+      .photo-grid-4, 
+      .quote-section {
         grid-template-columns: 1fr;
       }
-    }
 
+      /* Force 1:1 square ratio for photo cards on mobile/tablet */
+      .photo-card {
+        height: auto;
+        aspect-ratio: 1 / 1;
+      }
+    }
+    
     /* Ensure the list item anchors the absolute dropdown menu */
     .nav-links li.dropdown {
       position: relative;
