@@ -712,6 +712,23 @@
     </ul>
   </section>
 
+    <!-- High-Contrast Navy Card -->
+  <section class="section-container" style="padding-bottom: 0;">
+    <div style="background-color: var(--dark-navy); color: var(--white); padding: 32px; border-radius: 16px; box-shadow: 0 8px 20px rgba(25, 42, 62, 0.15); display: flex; gap: 20px; align-items: center;">
+      <div style="font-size: 2rem; color: #ffffff; line-height: 1; flex-shrink: 0;">
+        <i class="fa-solid fa-heart-handshake"></i>
+      </div>
+      <div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; color: var(--white);">
+          Hosting a Charity or Budget-Conscious Event?
+        </h3>
+        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; margin: 0;">
+          Planning a non-profit fundraiser, charity event, or working with a tight budget? We believe great matcha should be accessible. Reach out using the form below with your event details. We'd love to work with you to make it happen!
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Form Section -->
   <section class="section-container" id="quote-form">
     <div class="quote-section">
@@ -763,7 +780,18 @@
             <option value="Custom / Unsure">Custom Package / Unsure</option>
           </select>
         </div>
-        
+
+        <div class="form-group">
+          <select name="Estimated Budget" class="form-control">
+            <option value="" disabled selected>Estimated Budget (Optional)</option>
+            <option value="Under $500 (Charity /Non-Profit/Tight Budget)">Under $500 (Charity/Non-Profit/Flexible)</option>
+            <option value="$500-$1,000">$500-$1,000</option>
+            <option value="$1,000 -$2,000">$1,000-$2,000</option>
+            <option value="$2,000+">$2,000+</option>
+            <option value="Flexible / Unsure">Flexible / Unsure</option>
+          </select>
+        </div>
+                
         <div class="form-group">
           <textarea name="Comments / Special Requests" class="form-control" placeholder="Comments. Please leave any questions or special requests for your event."></textarea>
         </div>
