@@ -34,6 +34,53 @@
   <link rel="canonical" href="https://www.firstsipmatcha.com/menu">
   
   <style>
+      /* Top Announcement Marquee Banner */
+  .announcement-bar {
+    background-color: #111d2b; /* Matches your footer navy */
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    width: max-content;
+    animation: marqueeScroll 28s linear infinite;
+  }
+
+  /* Pause scrolling on hover so visitors can read or click */
+  .announcement-bar:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .marquee-group span {
+    padding: 0 36px;
+  }
+
+  .marquee-group a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  @keyframes marqueeScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
     :root {
       --dark-navy: #192a3e;
       --light-bg: #edf2f7;
@@ -395,6 +442,26 @@
       </div>
     </div>
   </header>
+
+  <div class="announcement-bar" role="region" aria-label="Promotions and Announcements">
+  <div class="marquee-track">
+    
+    <!-- Group 1: Your Messages -->
+    <div class="marquee-group">
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+    </div>
+
+    <!-- Group 2: Exact Duplicate for Seamless Infinite Loop -->
+    <div class="marquee-group" aria-hidden="true">
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+    </div>
+
+  </div>
+</div>
 
   <!-- Main Menu Grid Section -->
   <main class="section-container">

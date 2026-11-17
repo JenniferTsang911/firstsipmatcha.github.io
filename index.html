@@ -55,6 +55,111 @@
   <link rel="canonical" href="https://www.firstsipmatcha.com/">
 
   <style>
+    /* Promo Popup Overlay */
+    .promo-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(25, 42, 62, 0.72);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(3px);
+    }
+
+    .promo-overlay.active {
+      display: flex;
+    }
+
+    .promo-modal {
+      background-color: #ffffff;
+      color: #192a3e;
+      max-width: 460px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .promo-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #4a5568;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .promo-close:hover {
+      color: #192a3e;
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background-color: #edf2f7;
+      color: #192a3e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .promo-modal h3 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .promo-modal p {
+      color: #4a5568;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+
+    .promo-cta {
+      display: block;
+      width: 100%;
+      background-color: #192a3e;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 13px 20px;
+      border-radius: 8px;
+      transition: opacity 0.2s ease;
+    }
+
+    .promo-cta:hover {
+      opacity: 0.9;
+    }
+
+    .promo-dismiss {
+      display: inline-block;
+      margin-top: 14px;
+      background: none;
+      border: none;
+      color: #6c7a89;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
     /* Global Variables matching the screenshot palette */
     :root {
       --dark-navy: #192a3e;
@@ -450,6 +555,52 @@
 
   </style>
 </head>
+<!-- Seasonal Promo Pop-Up -->
+<div id="promo-popup" class="promo-overlay" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+  <div class="promo-modal">
+    <button type="button" class="promo-close" id="close-promo-x" aria-label="Close offer">&times;</button>
+    <span class="promo-badge">Limited-Time Offer</span>
+    <h3 id="promo-title">Get 20% Off Your Catering Service</h3>
+    <p>
+      Book us for your upcoming event or production between <strong>now and February 28, 2027</strong>, and receive <strong>20% off</strong> your total cost.
+    </p>
+    <a href="catering_services.html" class="promo-cta">Request a Quote</a>
+    <button type="button" class="promo-dismiss" id="close-promo-later">No thanks, maybe later</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("promo-popup");
+    const closeX = document.getElementById("close-promo-x");
+    const closeLater = document.getElementById("close-promo-later");
+
+    // Auto-expire after Feb 28, 2027
+    const expiryDate = new Date("2027-03-01T00:00:00");
+    const now = new Date();
+
+    // Open immediately on page load
+    if (now < expiryDate && !sessionStorage.getItem("fsm_feb2027_promo_seen")) {
+      popup.classList.add("active");
+    }
+
+    function dismissPopup() {
+      popup.classList.remove("active");
+      sessionStorage.setItem("fsm_feb2027_promo_seen", "true");
+    }
+
+    closeX.addEventListener("click", dismissPopup);
+    closeLater.addEventListener("click", dismissPopup);
+
+    // Close if user clicks outside the modal box
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) {
+        dismissPopup();
+      }
+    });
+  });
+</script>
+
 <body>
 
   <!-- Top Navigation Header -->
@@ -474,7 +625,6 @@
       </div>
     </div>
   </header>
-
   <!-- Hero Split Section -->
   <section class="hero-split">
     <div class="hero-text">

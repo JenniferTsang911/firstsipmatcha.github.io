@@ -35,6 +35,53 @@
   <link rel="canonical" href="https://www.firstsipmatcha.com/film-production">
   
   <style>
+     /* Top Announcement Marquee Banner */
+  .announcement-bar {
+    background-color: #111d2b; /* Matches your footer navy */
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    width: max-content;
+    animation: marqueeScroll 28s linear infinite;
+  }
+
+  /* Pause scrolling on hover so visitors can read or click */
+  .announcement-bar:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .marquee-group span {
+    padding: 0 36px;
+  }
+
+  .marquee-group a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  @keyframes marqueeScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
     :root {
       --dark-navy: #192a3e;
       --light-bg: #edf2f7;
@@ -541,7 +588,6 @@
   </style>
 </head>
 <body>
-
   <!-- Top Navigation Header -->
   <header>
     <div class="nav-container">
@@ -564,6 +610,26 @@
       </div>
     </div>
   </header>
+
+  <div class="announcement-bar" role="region" aria-label="Promotions and Announcements">
+  <div class="marquee-track">
+    
+    <!-- Group 1: Your Messages -->
+    <div class="marquee-group">
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+    </div>
+
+    <!-- Group 2: Exact Duplicate for Seamless Infinite Loop -->
+    <div class="marquee-group" aria-hidden="true">
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+      <span> Book between now &amp; Feb 28, 2027 for <strong>20% OFF</strong> catering</span>
+    </div>
+
+  </div>
+</div>
 
   <!-- Photo Gallery Strip Top -->
   <div class="section-container" style="padding-bottom: 0;">
@@ -785,14 +851,26 @@
   </section>
 
   <script>
-    flatpickr("#production-dates", {
-      mode: "range",
-      dateFormat: "Y-m-d",
-      minDate: "today",
-      showMonths: 1,
-      locale: {
-        rangeSeparator: " to "
-      }
+flatpickr("#production-dates", {
+    mode: "range",
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    showMonths: 1,
+    locale: {
+      rangeSeparator: " to "
+    },
+    disable: [
+      // 1. Block specific single dates (YYYY-MM-DD)
+      "2026-12-04",
+      "2026-12-05",
+      "2026-12-06",
+      "2026-12-06",
+
+      // 2. Block a continuous date range
+      {
+        from: "2027-01-16",
+        to: "2027-01-30",
+      },]
     });
 
     flatpickr("#desired-start-time", {
