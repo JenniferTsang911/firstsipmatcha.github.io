@@ -585,6 +585,39 @@
       color: #8b9bb0;
       margin-top: 10px;
     }
+    .card-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.card-price-wrap .price-old {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.card-price-wrap .price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+}
+
+.card-price-wrap .discount-tag {
+  background-color: #e2e8f0;
+  color: var(--dark-navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  align-self: center;
+}
   </style>
 </head>
 <body>
@@ -685,7 +718,9 @@
         <div class="popular-badge">Most Popular</div>
         <h3 class="card-plan-title">Production Matcha Bar</h3>
         <div class="card-price-wrap">
-          <span class="price">$1,250</span>
+          <span class="price-old">$1,250</span>
+          <span class="price">$1,000</span>
+          <span class="discount-tag">20% OFF</span>
         </div>
         <p class="card-subtitle"><i>Our most popular format for mid-sized productions and longer service windows.</i></p>
         
@@ -706,7 +741,9 @@
       <div class="pricing-card">
         <h3 class="card-plan-title">High-Volume Production</h3>
         <div class="card-price-wrap">
-          <span class="price">$2,350</span>
+          <span class="price-old">$2,350</span>
+          <span class="price">$1,880</span>
+          <span class="discount-tag">20% OFF</span>
         </div>
         <p class="card-subtitle"><i>Designed for large crews, full-day productions, commercial sets, and high-volume service.</i></p>
         
